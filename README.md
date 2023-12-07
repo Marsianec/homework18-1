@@ -50,5 +50,8 @@ resource "docker_container" "nginx" {
 }
 ```  
 
-6. Если я правильно понимаю, то не удален он будет так как по умолчанию как при триггере он остается чтоб при необходимости развертывания инфраструктуры при смене кода. Вот строчка из документации:
-"A map of arbitrary strings that, when changed, will force the docker_image resource to be replaced. This can be used to rebuild an image when contents of source code folders change"  
+6. Не удали образ так как есть такой параметр в коде:
+```
+  keep_locally = true
+```  
+В документации сказано "If true, then the Docker image won't be deleted on destroy operation. If this is false, it will delete the image from the docker local storage on destroy operation."
